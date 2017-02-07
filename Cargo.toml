@@ -9,11 +9,12 @@ rustc-serialize = "0.3"
 hyperlocal = "0.3.0"
 router = "*"
 iron = "*"
+clap = "2.20.*"
 
 [lib]
 name = "orcinusd"
 path = "src/lib.rs"
 
 [[bin]]
-name = "bin"
+name = "orcinusd"
 path = "src/bin.rs"
