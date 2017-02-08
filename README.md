@@ -1,4 +1,6 @@
 ## Ordinusd
+[![Build Status](https://travis-ci.org/orcinustools/orcinusd.svg?branch=master)](https://travis-ci.org/orcinustools/orcinusd)
+
 Orcinusd is the daemon app for docker by running on swarm mode, this project is specially for support [Orcinus](https://github.com/orcinustools/orcinus)
 
 ### Run
