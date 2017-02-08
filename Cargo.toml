@@ -1,7 +1,10 @@
 [package]
 name = "orcinusd"
 version = "0.1.1"
-authors = ["anak10thn <anak10thn@gmail.com>"]
+authors = [
+  "anak10thn <anak10thn@gmail.com>",
+  "imamdigmi <imamdigmi@gmail.com>"
+]
 
 [dependencies]
 hyper = "0.10"
