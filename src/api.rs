@@ -3,21 +3,21 @@ use hyper::Client;
 use hyperlocal::{DomainUrl, UnixSocketConnector};
 
 pub struct Binding {
-    endpoint: &'static str
+    endpoint: &'static str,
 }
 
 impl Binding {
-    pub fn new(endpoint : &'static str) -> Binding {
+    pub fn new(endpoint: &'static str) -> Binding {
         Binding { endpoint: endpoint }
     }
 
-    pub fn get(&self,api : &str) -> String{
+    pub fn get(&self, api: &str) -> String {
         let url = self.endpoint;
-        get_docker_api(url,api)
+        get_docker_api(url, api)
     }
 }
 
-fn get_docker_api(url : &str,api : &str) -> String{
+fn get_docker_api(url: &str, api: &str) -> String {
     let client = Client::with_connector(UnixSocketConnector);
 
     let mut response = match client.get(DomainUrl::new(url, api)).send() {
