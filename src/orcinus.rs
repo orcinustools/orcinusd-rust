@@ -1,54 +1,66 @@
 extern crate rustc_serialize;
 
-use api::Binding;
+use api::Binding as api;
+use libs::cluster::Cluster;
+use libs::ping::Ping;
+use libs::info::Info;
 
 pub struct Init {
-    sock: Binding,
+    sock : api,
 }
 
 impl Init {
     pub fn sock(socket: &'static str) -> Init {
-        let binding = Binding::new(socket);
-        Init { sock: binding }
+        let binding = api::new(socket);
+        Init { sock : binding }
     }
 
-    /* Ping */
-    pub fn ping(&self) -> String {
-        self.sock.get("/_ping")
+    pub fn cluster(self) -> Cluster {
+        Cluster::init(self.sock)
     }
 
-    /* Docker info */
-    pub fn info(&self) -> String {
-        self.sock.get("/info")
+    pub fn ping(self) -> Ping {
+        Ping::init(self.sock)
     }
 
-    /* Cluster */
-    pub fn cluster_info(&self) -> String {
-        self.sock.get("/swarm")
+    pub fn info(self) -> Info {
+        Info::init(self.sock)
     }
+    // /* Ping */
+    // pub fn ping(&self) -> String {
+    //     self.sock.get("/_ping")
+    // }
+    //
+    // /* Docker info */
+    // pub fn info(&self) -> String {
+    //     self.sock.get("/info")
+    // }
+    //
+    // /* Cluster */
 
-    /* Nodes */
-    pub fn nodes_info(&self) -> String {
-        self.sock.get("/nodes")
-    }
-
-    /* Services */
-    pub fn services_info(&self) -> String {
-        self.sock.get("/services")
-    }
-
-    /* Tasks */
-    pub fn tasks_info(&self) -> String {
-        self.sock.get("/tasks")
-    }
-
-    /* Volumes */
-    pub fn volumes_info(&self) -> String {
-        self.sock.get("/volumes")
-    }
-
-    /* Events */
-    pub fn events_info(&self) -> String {
-        self.sock.get("/events")
-    }
+    //
+    // /* Nodes */
+    // pub fn nodes_info(&self) -> String {
+    //     self.sock.get("/nodes")
+    // }
+    //
+    // /* Services */
+    // pub fn services_info(&self) -> String {
+    //     self.sock.get("/services")
+    // }
+    //
+    // /* Tasks */
+    // pub fn tasks_info(&self) -> String {
+    //     self.sock.get("/tasks")
+    // }
+    //
+    // /* Volumes */
+    // pub fn volumes_info(&self) -> String {
+    //     self.sock.get("/volumes")
+    // }
+    //
+    // /* Events */
+    // pub fn events_info(&self) -> String {
+    //     self.sock.get("/events")
+    // }
 }

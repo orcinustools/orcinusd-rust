@@ -29,5 +29,5 @@ fn get_docker_api(url: &str, api: &str) -> String {
         Ok(_) => (),
         Err(_) => panic!("I give up."),
     };
-    return buf;
+    return buf
 }
