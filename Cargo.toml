@@ -13,9 +13,6 @@ hyperlocal = "0.3.0"
 router = "*"
 iron = "*"
 clap = "2.20.*"
-serde = "0.9.0"
-serde_derive = "0.9.0"
-serde_json = "0.9.0"
 
 [lib]
 name = "orcinusd"
