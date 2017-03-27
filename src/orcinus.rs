@@ -26,18 +26,6 @@ impl Init {
     pub fn info(self) -> Info {
         Info::init(self.sock)
     }
-    // /* Ping */
-    // pub fn ping(&self) -> String {
-    //     self.sock.get("/_ping")
-    // }
-    //
-    // /* Docker info */
-    // pub fn info(&self) -> String {
-    //     self.sock.get("/info")
-    // }
-    //
-    // /* Cluster */
-
     //
     // /* Nodes */
     // pub fn nodes_info(&self) -> String {
