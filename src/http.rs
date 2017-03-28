@@ -21,6 +21,16 @@ pub fn server(host: &str) {
 
     router.get("/cluster",cluster, "cluster_info");
 
+    router.get("/nodes",nodes, "nodes_info");
+
+    router.get("/events",events, "events_info");
+
+    router.get("/services",services, "services_info");
+
+    router.get("/tasks",tasks, "tasks_info");
+
+    router.get("/volumes",volumes, "volumes_info");
+
     Iron::new(router).http(hostname).unwrap();
 
     /* Ping */
@@ -43,38 +53,38 @@ pub fn server(host: &str) {
       Ok(Response::with((status::Ok, json_type,data)))
     }
 
-    // /* Nodes */
-    // fn nodes_info(_: &mut Request) -> IronResult<Response> {
-    //     let data = orc().nodes_info();
-    //     let json_type = "application/json".parse::<Mime>().unwrap();
-    //     Ok(Response::with((status::Ok, json_type, data)))
-    // }
-    //
-    // /* Services */
-    // fn services_info(_: &mut Request) -> IronResult<Response> {
-    //     let data = orc().services_info();
-    //     let json_type = "application/json".parse::<Mime>().unwrap();
-    //     Ok(Response::with((status::Ok, json_type, data)))
-    // }
-    //
-    // /* Tasks */
-    // fn tasks_info(_: &mut Request) -> IronResult<Response> {
-    //     let data = orc().tasks_info();
-    //     let json_type = "application/json".parse::<Mime>().unwrap();
-    //     Ok(Response::with((status::Ok, json_type, data)))
-    // }
-    //
-    // /* Volumes */
-    // fn volumes_info(_: &mut Request) -> IronResult<Response> {
-    //     let data = orc().volumes_info();
-    //     let json_type = "application/json".parse::<Mime>().unwrap();
-    //     Ok(Response::with((status::Ok, json_type, data)))
-    // }
-    //
-    // /* Events */
-    // fn events_info(_: &mut Request) -> IronResult<Response> {
-    //     let data = orc().events_info();
-    //     let json_type = "application/json".parse::<Mime>().unwrap();
-    //     Ok(Response::with((status::Ok, json_type, data)))
-    // }
+    /* Nodes */
+    fn nodes(_: &mut Request) -> IronResult<Response> {
+      let data = orc().nodes().info();
+      let json_type = "application/json".parse::<Mime>().unwrap();
+      Ok(Response::with((status::Ok, json_type, data)))
+    }
+
+    /* Services */
+    fn services(_: &mut Request) -> IronResult<Response> {
+      let data = orc().services().info();
+      let json_type = "application/json".parse::<Mime>().unwrap();
+      Ok(Response::with((status::Ok, json_type, data)))
+    }
+
+    /* Tasks */
+    fn tasks(_: &mut Request) -> IronResult<Response> {
+      let data = orc().tasks().info();
+      let json_type = "application/json".parse::<Mime>().unwrap();
+      Ok(Response::with((status::Ok, json_type, data)))
+    }
+
+    /* Volumes */
+    fn volumes(_: &mut Request) -> IronResult<Response> {
+      let data = orc().volumes().info();
+      let json_type = "application/json".parse::<Mime>().unwrap();
+      Ok(Response::with((status::Ok, json_type, data)))
+    }
+
+    /* Events */
+    fn events(_: &mut Request) -> IronResult<Response> {
+      let data = orc().events().info();
+      let json_type = "application/json".parse::<Mime>().unwrap();
+      Ok(Response::with((status::Ok, json_type, data)))
+    }
 }

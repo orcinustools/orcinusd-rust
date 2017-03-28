@@ -5,3 +5,4 @@ pub mod tasks;
 pub mod volumes;
 pub mod ping;
 pub mod info;
+pub mod events;

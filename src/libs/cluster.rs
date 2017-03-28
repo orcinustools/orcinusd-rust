@@ -12,4 +12,8 @@ impl Cluster {
   pub fn info(&self) -> String {
     self.init.get("/swarm")
   }
+
+  pub fn create(&self,data: &str) -> String {
+    self.init.post("/swarm/init",data)
+  }
 }
