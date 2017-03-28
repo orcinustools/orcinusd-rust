@@ -19,11 +19,11 @@ pub fn server(host: &str) {
 
     router.get("/info",info, "info");
 
+    router.get("/events",events, "events_info");
+
     router.get("/cluster",cluster, "cluster_info");
 
     router.get("/nodes",nodes, "nodes_info");
-
-    router.get("/events",events, "events_info");
 
     router.get("/services",services, "services_info");
 
